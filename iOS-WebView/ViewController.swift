@@ -67,6 +67,24 @@ class ViewController: UIViewController, UISearchBarDelegate, WKUIDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    func webView(webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: (String?) -> Void) {
+        let defaultNavBarTintColor = self.navigationController?.navigationBar.barTintColor
+        self.navigationController?.navigationBar.barTintColor = UIColor.greenColor()
+        self.navigationItem.title = "!!!Promptだよ!!!"
+        let alertController = UIAlertController(title: "Prompt表示", message: prompt, preferredStyle: .Alert)
+        var alertTextField:UITextField!
+        alertController.addTextFieldWithConfigurationHandler{textField in
+            textField.text = defaultText
+            alertTextField = textField
+        }
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
+            self.navigationController?.navigationBar.barTintColor = defaultNavBarTintColor
+            self.navigationItem.title = "WebView"
+            completionHandler(alertTextField.text)
+        }))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         guard let path:String = keyPath else {
             return
