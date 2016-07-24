@@ -22,6 +22,7 @@ class ViewController: UIViewController, UISearchBarDelegate, WKUIDelegate {
         
         webView.allowsBackForwardNavigationGestures = true
         webView.UIDelegate = self
+        webView.addObserver(self, forKeyPath: "URL", options: .New, context: nil)
         self.view.addSubview(webView)
         
         let views = ["webView": webView]
@@ -58,6 +59,18 @@ class ViewController: UIViewController, UISearchBarDelegate, WKUIDelegate {
             completionHandler()
         }))
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        guard let path:String = keyPath else {
+            return
+        }
+        switch path {
+        case "URL":
+            searchBar.text = webView.URL?.absoluteString
+        default:
+            break
+        }
     }
 
 }
