@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Input URL here" translatesAutoresizingMaskIntoConstraints="NO" id="2vW-fJ-XkN">
+                            <searchBar contentMode="redraw" placeholder="Input URL here" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vW-fJ-XkN">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
                                 <scopeButtonTitles>
