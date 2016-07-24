@@ -55,8 +55,13 @@ class ViewController: UIViewController, UISearchBarDelegate, WKUIDelegate {
     }
 
     func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
+        let defaultNavBarTintColor = self.navigationController?.navigationBar.barTintColor
+        self.navigationController?.navigationBar.barTintColor = UIColor.redColor()
+        self.navigationItem.title = "!!!Alertだよ!!!"
         let alertController = UIAlertController(title: "Alert表示", message: message, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
+            self.navigationController?.navigationBar.barTintColor = defaultNavBarTintColor
+            self.navigationItem.title = "WebView"
             completionHandler()
         }))
         self.presentViewController(alertController, animated: true, completion: nil)
