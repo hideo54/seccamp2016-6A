@@ -46,7 +46,9 @@ class ViewController: UIViewController, UISearchBarDelegate, WKUIDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.view.endEditing(true)
         guard let url = NSURL(string: searchBar.text!) else {
-            // Error handling
+            let alertController = UIAlertController(title: "Incorrect URL", message: "Input a correct URL.", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
             return
         }
         webView.loadRequest(NSURLRequest(URL: url))
