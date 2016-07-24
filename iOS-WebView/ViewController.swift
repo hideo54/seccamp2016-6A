@@ -20,6 +20,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         
         searchBar.delegate = self
         
+        webView.allowsBackForwardNavigationGestures = true
         self.view.addSubview(webView)
         
         let views = ["webView": webView]
