@@ -53,7 +53,6 @@ class ViewController: UIViewController, UISearchBarDelegate, WKUIDelegate {
     }
 
     func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
-        print("called")
         let alertController = UIAlertController(title: "Alert表示", message: message, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
             completionHandler()
