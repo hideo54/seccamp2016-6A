@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, UISearchBarDelegate {
+class ViewController: UIViewController, UISearchBarDelegate, WKUIDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     let webView = WKWebView()
@@ -21,6 +21,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchBar.delegate = self
         
         webView.allowsBackForwardNavigationGestures = true
+        webView.UIDelegate = self
         self.view.addSubview(webView)
         
         let views = ["webView": webView]
@@ -48,6 +49,15 @@ class ViewController: UIViewController, UISearchBarDelegate {
             return
         }
         webView.loadRequest(NSURLRequest(URL: url))
+    }
+
+    func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
+        print("called")
+        let alertController = UIAlertController(title: "Alert表示", message: message, preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
+            completionHandler()
+        }))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 
 }
