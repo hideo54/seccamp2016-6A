@@ -4,9 +4,7 @@
 
 AlertやPromptを踏むとアプリ側で用意した処理(=アプリ内Alert)が出ます。それだけだと普通のAlertっぽいので、ついでに背景の色を変えるなどしました。
 
-![normal](https://github.com/hideo54/seccamp2016-6A/raw/master/normal.png)
-![alert](https://github.com/hideo54/seccamp2016-6A/raw/master/alert.png)
-![prompt](https://github.com/hideo54/seccamp2016-6A/raw/master/prompt.png)
+![demo](https://github.com/hideo54/seccamp2016-6A/raw/master/demo.gif)
 
 ## 構成
 
